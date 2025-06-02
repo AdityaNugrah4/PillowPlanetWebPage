@@ -5,7 +5,13 @@
 <head>
     <meta charset="utf-8">
     <title>Redirecting...</title>
-    <script type="module" src="/PillowPlanetWeb/public/page404.js"></script>
+    <script type="text/javascript">
+        var segmentCount = 1; // /repo-name/ == 1 segment before the actual path
+        var l = window.location;
+        sessionStorage.redirect = l.href;
+        var basePath = l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/';
+        l.replace(l.protocol + '//' + l.host + basePath);
+    </script>
 </head>
 
 <body>
